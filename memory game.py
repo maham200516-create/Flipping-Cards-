@@ -11,7 +11,10 @@ l1=tk.Label(x,text="Welcome to Flipping Memory Game",bg="light pink",fg="black",
 l1.pack(side="top",fill=tk.X)
 l2=tk.Label(x,text="Modes",bg="light pink",fg="black",font=('Arial',15,'bold'))
 l2.pack(side="top",pady=10,fill=tk.X)
-
+def on_enter(e):
+    e.widget['background']='lavenderblush'
+def on_leave(e):
+    e.widget['background']='light pink'
 
 def easy():
     m=tk.Tk()                                   #main window for easy mode
@@ -50,7 +53,8 @@ def easy():
     m.update()
     reset=tk.Button(m,text="Reset",font=("Arial",20,"bold"),relief="flat",bg="light pink",activebackground="white",cursor="hand2",command=reset)
     reset.place(x=500,y=400)
-
+    reset.bind("<Enter>", on_enter)
+    reset.bind("<Leave>", on_leave)
 
     class Cards:            #creates buttons and checks them (main game logic)
         def __init__(self,value,j,i):
@@ -99,6 +103,8 @@ def easy():
             m.update()
 b1=tk.Button(x,text="Easy",bg="light pink",fg="black",font=('Arial',15,'bold'),width=6,command=easy)
 b1.place(x=160,y=100)
+b1.bind("<Enter>",on_enter)
+b1.bind("<Leave>",on_leave)
 
 def medium():
     m=tk.Tk()                                   #main window for medium mode
@@ -137,7 +143,8 @@ def medium():
     m.update()
     reset=tk.Button(m,text="Reset",font=("Arial",20,"bold"),relief="flat",bg="light pink",activebackground="white",cursor="hand2",command=reset)
     reset.place(x=500,y=400)
-
+    reset.bind("<Enter>", on_enter)
+    reset.bind("<Leave>", on_leave)
 
     class Cards:
         def __init__(self,value,j,i):
@@ -187,7 +194,8 @@ def medium():
     m.mainloop()
 b2=tk.Button(x,text="Medium",bg="light pink",fg="black",font=('Arial',15,'bold'),width=6,command=medium)
 b2.place(x=160,y=180)
-
+b2.bind("<Enter>",on_enter)
+b2.bind("<Leave>",on_leave)
 
 def hard():
     m=tk.Tk()                                   #main window for hard mode
@@ -226,7 +234,8 @@ def hard():
     m.update()
     reset=tk.Button(m,text="Reset",font=("Arial",20,"bold"),relief="flat",bg="light pink",activebackground="white",cursor="hand2",command=reset)
     reset.place(x=500,y=400)
-
+    reset.bind("<Enter>", on_enter)
+    reset.bind("<Leave>", on_leave)
 
     class Cards:
         def __init__(self,value,j,i):
@@ -276,6 +285,9 @@ def hard():
 
 b3=tk.Button(x,text="Hard",bg="light pink",fg="black",font=('Arial',15,'bold'),width=6,command=hard)
 b3.place(x=160,y=260)
+b3.bind("<Enter>",on_enter)
+b3.bind("<Leave>",on_leave)
+
 def h_t_play():                         #function explaining the game
     m1=tk.Tk()                          #new window
     m1.geometry("700x250")
@@ -294,4 +306,7 @@ def h_t_play():                         #function explaining the game
 
 h_t_p=tk.Button(x,text="Rules",font=("Arial",20,"bold"),bg="light pink",activebackground="white",cursor="hand2",command=h_t_play,width=6)
 h_t_p.place(x=150,y=350)
+h_t_p.bind("<Enter>",on_enter)
+h_t_p.bind("<Leave>",on_leave)
 x.mainloop()
+
